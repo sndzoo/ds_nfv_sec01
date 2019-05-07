@@ -1,0 +1,6 @@
+['remote "sndzoo"']
+url = https://sndzoo.s3.amazonaws.com/ds_nfv_sec01
+[core]
+remote = sndzoo
+['remote "upload"']
+url = s3://sndzoo/ds_nfv_sec01
