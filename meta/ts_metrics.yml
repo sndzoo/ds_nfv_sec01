@@ -1,0 +1,316 @@
+- name: container_cpu_usage_rate
+  query: sum(rate(container_cpu_usage_seconds_total{name=~"mn.*"}[10s])) by (name)
+- name: container_cpu_usage_rate_normalized
+  query: sum(rate(container_cpu_usage_seconds_total{name=~"mn.*"}[10s])) by (name)
+    / sum(container_spec_cpu_quota{name=~"mn.*"}/container_spec_cpu_period{name=~"mn.*"})
+    by (name)
+- name: container_cpu_system_seconds_total
+  query: sum(container_cpu_system_seconds_total{name=~"mn.*"}) by (name)
+- name: container_cpu_user_seconds_total
+  query: sum(container_cpu_user_seconds_total{name=~"mn.*"}) by (name)
+- name: container_cpu_usage_seconds_total
+  query: sum(container_cpu_usage_seconds_total{name=~"mn.*"}) by (name)
+- name: container_cpu_cfs_periods_total
+  query: sum(container_cpu_cfs_periods_total{name=~"mn.*"}) by (name)
+- name: container_cpu_cfs_throttled_periods_total
+  query: sum(container_cpu_cfs_throttled_periods_total{name=~"mn.*"}) by (name)
+- name: container_cpu_cfs_throttled_seconds_total
+  query: sum(container_cpu_cfs_throttled_seconds_total{name=~"mn.*"}) by (name)
+- name: container_memory_usage_bytes
+  query: sum(container_memory_usage_bytes{name=~"mn.*"}) by (name)
+- name: container_memory_max_usage_bytes
+  query: sum(container_memory_max_usage_bytes{name=~"mn.*"}) by (name)
+- name: container_memory_swap
+  query: sum(container_memory_swap{name=~"mn.*"}) by (name)
+- name: container_memory_failures_total
+  query: sum(container_memory_failures_total{name=~"mn.*"}) by (name)
+- name: container_memory_cache
+  query: sum(container_memory_cache{name=~"mn.*"}) by (name)
+- name: container_memory_rss
+  query: sum(container_memory_rss{name=~"mn.*"}) by (name)
+- name: container_fs_io_current
+  query: sum(container_fs_io_current{name=~"mn.*"}) by (name)
+- name: container_fs_io_time_seconds_total
+  query: sum(container_fs_io_time_seconds_total{name=~"mn.*"}) by (name)
+- name: container_fs_usage_bytes
+  query: sum(container_fs_usage_bytes{name=~"mn.*"}) by (name)
+- name: container_network_receive_bytes_total
+  query: sum(container_network_receive_bytes_total{name=~"mn.*"}) by (name)
+- name: container_network_transmit_bytes_total
+  query: sum(container_network_transmit_bytes_total{name=~"mn.*"}) by (name)
+- name: container_network_receive_errors_total
+  query: sum(container_network_receive_errors_total{name=~"mn.*"}) by (name)
+- name: container_network_receive_packets_dropped_total
+  query: sum(container_network_receive_packets_dropped_total{name=~"mn.*"}) by (name)
+- name: container_network_transmit_errors_total
+  query: sum(container_network_transmit_errors_total{name=~"mn.*"}) by (name)
+- name: container_network_transmit_packets_dropped_total
+  query: sum(container_network_transmit_packets_dropped_total{name=~"mn.*"}) by (name)
+- name: container_memory_working_set_bytes
+  query: sum(container_memory_working_set_bytes{name=~"mn.*"}) by (name)
+- name: container_memory_usage_bytes
+  query: sum(container_memory_usage_bytes{name=~"mn.*"}) by (name)
+- name: container_network_receive_packets_dropped_total
+  query: sum(container_network_receive_packets_dropped_total{name=~"mn.*"}) by (name)
+- name: container_start_time_abs_seconds
+  query: sum(container_start_time_seconds{name=~"mn.*"}) by (name)
+- name: container_spec_cpu_period
+  query: sum(container_spec_cpu_period{name=~"mn.*"}) by (name)
+- name: container_spec_cpu_quota
+  query: sum(container_spec_cpu_quota{name=~"mn.*"}) by (name)
+- name: container_spec_cpu_shares
+  query: sum(container_spec_cpu_shares{name=~"mn.*"}) by (name)
+- name: container_spec_memory_limit_bytes
+  query: sum(container_spec_memory_limit_bytes{name=~"mn.*"}) by (name)
+- name: container_spec_memory_reservation_limit_bytes
+  query: sum(container_spec_memory_reservation_limit_bytes{name=~"mn.*"}) by (name)
+- name: container_spec_memory_swap_limit_bytes
+  query: sum(container_spec_memory_swap_limit_bytes{name=~"mn.*"}) by (name)
+- name: hwnode_cpu_usage
+  query: sum(rate(node_cpu_seconds_total[10s])) by (cpu, mode)
+- name: hwnode_load1
+  query: node_load1
+- name: hwnode_load5
+  query: node_load5
+- name: hwnode_load15
+  query: node_load15
+- name: hwnode_memory_MemAvailable_bytes
+  query: node_memory_MemAvailable_bytes
+- name: hwnode_memory_MemUsed_bytes
+  query: node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes
+- name: hwnode_hwmon_temp_celsius
+  query: node_hwmon_temp_celsius
+- name: hwnode_context_switches_total
+  query: node_context_switches_total
+- name: hwnode_procs_running
+  query: node_procs_running
+- name: hwnode_vmstat_pgfault
+  query: rate(node_vmstat_pgfault[10s])
+- name: suricata_stats_app_layer_flow_dcerpc_tcp
+  query: suricata_stats_app_layer_flow_dcerpc_tcp
+- name: suricata_stats_app_layer_flow_dcerpc_udp
+  query: suricata_stats_app_layer_flow_dcerpc_udp
+- name: suricata_stats_app_layer_flow_dns_tcp
+  query: suricata_stats_app_layer_flow_dns_tcp
+- name: suricata_stats_app_layer_flow_dns_udp
+  query: suricata_stats_app_layer_flow_dns_udp
+- name: suricata_stats_app_layer_flow_failed_tcp
+  query: suricata_stats_app_layer_flow_failed_tcp
+- name: suricata_stats_app_layer_flow_failed_udp
+  query: suricata_stats_app_layer_flow_failed_udp
+- name: suricata_stats_app_layer_flow_ftp
+  query: suricata_stats_app_layer_flow_ftp
+- name: suricata_stats_app_layer_flow_http
+  query: suricata_stats_app_layer_flow_http
+- name: suricata_stats_app_layer_flow_imap
+  query: suricata_stats_app_layer_flow_imap
+- name: suricata_stats_app_layer_flow_msn
+  query: suricata_stats_app_layer_flow_msn
+- name: suricata_stats_app_layer_flow_smb
+  query: suricata_stats_app_layer_flow_smb
+- name: suricata_stats_app_layer_flow_smtp
+  query: suricata_stats_app_layer_flow_smtp
+- name: suricata_stats_app_layer_flow_ssh
+  query: suricata_stats_app_layer_flow_ssh
+- name: suricata_stats_app_layer_flow_tls
+  query: suricata_stats_app_layer_flow_tls
+- name: suricata_stats_app_layer_tx_dcerpc_tcp
+  query: suricata_stats_app_layer_tx_dcerpc_tcp
+- name: suricata_stats_app_layer_tx_dcerpc_udp
+  query: suricata_stats_app_layer_tx_dcerpc_udp
+- name: suricata_stats_app_layer_tx_dns_tcp
+  query: suricata_stats_app_layer_tx_dns_tcp
+- name: suricata_stats_app_layer_tx_dns_udp
+  query: suricata_stats_app_layer_tx_dns_udp
+- name: suricata_stats_app_layer_tx_ftp
+  query: suricata_stats_app_layer_tx_ftp
+- name: suricata_stats_app_layer_tx_http
+  query: suricata_stats_app_layer_tx_http
+- name: suricata_stats_app_layer_tx_smb
+  query: suricata_stats_app_layer_tx_smb
+- name: suricata_stats_app_layer_tx_smtp
+  query: suricata_stats_app_layer_tx_smtp
+- name: suricata_stats_app_layer_tx_ssh
+  query: suricata_stats_app_layer_tx_ssh
+- name: suricata_stats_app_layer_tx_tls
+  query: suricata_stats_app_layer_tx_tls
+- name: suricata_stats_capture_kernel_drops
+  query: suricata_stats_capture_kernel_drops
+- name: suricata_stats_capture_kernel_packets
+  query: suricata_stats_capture_kernel_packets
+- name: suricata_stats_decoder_avg_pkt_size
+  query: suricata_stats_decoder_avg_pkt_size
+- name: suricata_stats_decoder_bytes
+  query: suricata_stats_decoder_bytes
+- name: suricata_stats_decoder_dce_pkt_too_small
+  query: suricata_stats_decoder_dce_pkt_too_small
+- name: suricata_stats_decoder_erspan
+  query: suricata_stats_decoder_erspan
+- name: suricata_stats_decoder_ethernet
+  query: suricata_stats_decoder_ethernet
+- name: suricata_stats_decoder_gre
+  query: suricata_stats_decoder_gre
+- name: suricata_stats_decoder_icmpv4
+  query: suricata_stats_decoder_icmpv4
+- name: suricata_stats_decoder_icmpv6
+  query: suricata_stats_decoder_icmpv6
+- name: suricata_stats_decoder_invalid
+  query: suricata_stats_decoder_invalid
+- name: suricata_stats_decoder_ipraw_invalid_ip_version
+  query: suricata_stats_decoder_ipraw_invalid_ip_version
+- name: suricata_stats_decoder_ipv4
+  query: suricata_stats_decoder_ipv4
+- name: suricata_stats_decoder_ipv4_in_ipv6
+  query: suricata_stats_decoder_ipv4_in_ipv6
+- name: suricata_stats_decoder_ipv6
+  query: suricata_stats_decoder_ipv6
+- name: suricata_stats_decoder_ipv6_in_ipv6
+  query: suricata_stats_decoder_ipv6_in_ipv6
+- name: suricata_stats_decoder_ltnull_pkt_too_small
+  query: suricata_stats_decoder_ltnull_pkt_too_small
+- name: suricata_stats_decoder_ltnull_unsupported_type
+  query: suricata_stats_decoder_ltnull_unsupported_type
+- name: suricata_stats_decoder_max_pkt_size
+  query: suricata_stats_decoder_max_pkt_size
+- name: suricata_stats_decoder_mpls
+  query: suricata_stats_decoder_mpls
+- name: suricata_stats_decoder_null
+  query: suricata_stats_decoder_null
+- name: suricata_stats_decoder_pkts
+  query: suricata_stats_decoder_pkts
+- name: suricata_stats_decoder_ppp
+  query: suricata_stats_decoder_ppp
+- name: suricata_stats_decoder_pppoe
+  query: suricata_stats_decoder_pppoe
+- name: suricata_stats_decoder_raw
+  query: suricata_stats_decoder_raw
+- name: suricata_stats_decoder_sctp
+  query: suricata_stats_decoder_sctp
+- name: suricata_stats_decoder_sll
+  query: suricata_stats_decoder_sll
+- name: suricata_stats_decoder_tcp
+  query: suricata_stats_decoder_tcp
+- name: suricata_stats_decoder_teredo
+  query: suricata_stats_decoder_teredo
+- name: suricata_stats_decoder_udp
+  query: suricata_stats_decoder_udp
+- name: suricata_stats_decoder_vlan
+  query: suricata_stats_decoder_vlan
+- name: suricata_stats_decoder_vlan_qinq
+  query: suricata_stats_decoder_vlan_qinq
+- name: suricata_stats_defrag_ipv4_fragments
+  query: suricata_stats_defrag_ipv4_fragments
+- name: suricata_stats_defrag_ipv4_reassembled
+  query: suricata_stats_defrag_ipv4_reassembled
+- name: suricata_stats_defrag_ipv4_timeouts
+  query: suricata_stats_defrag_ipv4_timeouts
+- name: suricata_stats_defrag_ipv6_fragments
+  query: suricata_stats_defrag_ipv6_fragments
+- name: suricata_stats_defrag_ipv6_reassembled
+  query: suricata_stats_defrag_ipv6_reassembled
+- name: suricata_stats_defrag_ipv6_timeouts
+  query: suricata_stats_defrag_ipv6_timeouts
+- name: suricata_stats_defrag_max_frag_hits
+  query: suricata_stats_defrag_max_frag_hits
+- name: suricata_stats_detect_alert
+  query: suricata_stats_detect_alert
+- name: suricata_stats_dns_memcap_global
+  query: suricata_stats_dns_memcap_global
+- name: suricata_stats_dns_memcap_state
+  query: suricata_stats_dns_memcap_state
+- name: suricata_stats_dns_memuse
+  query: suricata_stats_dns_memuse
+- name: suricata_stats_file_store_open_files
+  query: suricata_stats_file_store_open_files
+- name: suricata_stats_flow_emerg_mode_entered
+  query: suricata_stats_flow_emerg_mode_entered
+- name: suricata_stats_flow_emerg_mode_over
+  query: suricata_stats_flow_emerg_mode_over
+- name: suricata_stats_flow_icmpv4
+  query: suricata_stats_flow_icmpv4
+- name: suricata_stats_flow_icmpv6
+  query: suricata_stats_flow_icmpv6
+- name: suricata_stats_flow_memcap
+  query: suricata_stats_flow_memcap
+- name: suricata_stats_flow_memuse
+  query: suricata_stats_flow_memuse
+- name: suricata_stats_flow_mgr_bypassed_pruned
+  query: suricata_stats_flow_mgr_bypassed_pruned
+- name: suricata_stats_flow_mgr_closed_pruned
+  query: suricata_stats_flow_mgr_closed_pruned
+- name: suricata_stats_flow_mgr_est_pruned
+  query: suricata_stats_flow_mgr_est_pruned
+- name: suricata_stats_flow_mgr_flows_checked
+  query: suricata_stats_flow_mgr_flows_checked
+- name: suricata_stats_flow_mgr_flows_notimeout
+  query: suricata_stats_flow_mgr_flows_notimeout
+- name: suricata_stats_flow_mgr_flows_removed
+  query: suricata_stats_flow_mgr_flows_removed
+- name: suricata_stats_flow_mgr_flows_timeout
+  query: suricata_stats_flow_mgr_flows_timeout
+- name: suricata_stats_flow_mgr_flows_timeout_inuse
+  query: suricata_stats_flow_mgr_flows_timeout_inuse
+- name: suricata_stats_flow_mgr_new_pruned
+  query: suricata_stats_flow_mgr_new_pruned
+- name: suricata_stats_flow_mgr_rows_busy
+  query: suricata_stats_flow_mgr_rows_busy
+- name: suricata_stats_flow_mgr_rows_checked
+  query: suricata_stats_flow_mgr_rows_checked
+- name: suricata_stats_flow_mgr_rows_empty
+  query: suricata_stats_flow_mgr_rows_empty
+- name: suricata_stats_flow_mgr_rows_maxlen
+  query: suricata_stats_flow_mgr_rows_maxlen
+- name: suricata_stats_flow_mgr_rows_skipped
+  query: suricata_stats_flow_mgr_rows_skipped
+- name: suricata_stats_flow_spare
+  query: suricata_stats_flow_spare
+- name: suricata_stats_flow_tcp
+  query: suricata_stats_flow_tcp
+- name: suricata_stats_flow_tcp_reuse
+  query: suricata_stats_flow_tcp_reuse
+- name: suricata_stats_flow_udp
+  query: suricata_stats_flow_udp
+- name: suricata_stats_http_memcap
+  query: suricata_stats_http_memcap
+- name: suricata_stats_http_memuse
+  query: suricata_stats_http_memuse
+- name: suricata_stats_tcp_insert_data_normal_fail
+  query: suricata_stats_tcp_insert_data_normal_fail
+- name: suricata_stats_tcp_insert_data_overlap_fail
+  query: suricata_stats_tcp_insert_data_overlap_fail
+- name: suricata_stats_tcp_insert_list_fail
+  query: suricata_stats_tcp_insert_list_fail
+- name: suricata_stats_tcp_invalid_checksum
+  query: suricata_stats_tcp_invalid_checksum
+- name: suricata_stats_tcp_memuse
+  query: suricata_stats_tcp_memuse
+- name: suricata_stats_tcp_no_flow
+  query: suricata_stats_tcp_no_flow
+- name: suricata_stats_tcp_overlap
+  query: suricata_stats_tcp_overlap
+- name: suricata_stats_tcp_overlap_diff_data
+  query: suricata_stats_tcp_overlap_diff_data
+- name: suricata_stats_tcp_pseudo
+  query: suricata_stats_tcp_pseudo
+- name: suricata_stats_tcp_pseudo_failed
+  query: suricata_stats_tcp_pseudo_failed
+- name: suricata_stats_tcp_reassembly_gap
+  query: suricata_stats_tcp_reassembly_gap
+- name: suricata_stats_tcp_reassembly_memuse
+  query: suricata_stats_tcp_reassembly_memuse
+- name: suricata_stats_tcp_rst
+  query: suricata_stats_tcp_rst
+- name: suricata_stats_tcp_segment_memcap_drop
+  query: suricata_stats_tcp_segment_memcap_drop
+- name: suricata_stats_tcp_sessions
+  query: suricata_stats_tcp_sessions
+- name: suricata_stats_tcp_ssn_memcap_drop
+  query: suricata_stats_tcp_ssn_memcap_drop
+- name: suricata_stats_tcp_stream_depth_reached
+  query: suricata_stats_tcp_stream_depth_reached
+- name: suricata_stats_tcp_syn
+  query: suricata_stats_tcp_syn
+- name: suricata_stats_tcp_synack
+  query: suricata_stats_tcp_synack
+- name: suricata_stats_uptime
+  query: suricata_stats_uptime
