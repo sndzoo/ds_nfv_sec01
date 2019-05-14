@@ -12,7 +12,7 @@ vendor: "de.upb"
 name: "zoo_sec01"
 version: "1.0"
 author: "Manuel Peuster, Paderborn University, manuel.peuster@uni-paderborn.de"
-description: "TNFV Benchmark Zoo Experiment"
+description: "NFV Benchmark Zoo Experiment"
 
 # Path to the network service we want to profile (relative from PED location)
 service_package: "../services/ns-1vnf-ids-suricata"
@@ -22,7 +22,8 @@ service_experiments:
   - name: "zoo_sec01"
     description: "NFV Benchmark Zoo Experiment"
     repetitions: 20
-    time_limit: 60 # seconds per experiment
+    time_limit: 120 # seconds per experiment
+    time_warmup: 20
     # NSD to be used (vendor.name.version reference)
     target:
       vendor: "de.upb"
@@ -50,8 +51,8 @@ service_experiments:
         mem_swap_max: null
         io_bw: null
       - function: "mp.input"
-        cmd_start: ["tcpreplay -i data -tK --loop 4000 --preload-pcap /pcaps/smallFlows.pcap",
-                    "tcpreplay -i data -tK --loop 4000 --preload-pcap /pcaps/bigFlows.pcap"]
+        cmd_start: ["tcpreplay -i data -tK --loop 40000 --preload-pcap /pcaps/smallFlows.pcap",
+                    "tcpreplay -i data -tK --loop 40000 --preload-pcap /pcaps/bigFlows.pcap"]
         cmd_stop: "./stop.sh"
         cpu_bw: null  # float: fraction of CPU time in vim-emu
         cpu_cores: "14"  # string: this is "cpuset_cpu" in vim-emu e.g. ["0, 1"] -> 2 CPUs
